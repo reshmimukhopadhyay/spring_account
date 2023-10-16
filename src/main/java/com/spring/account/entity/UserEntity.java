@@ -1,10 +1,15 @@
 package com.spring.account.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
+
+import java.util.Date;
+import java.util.UUID;
 
 @Builder
 @Data
@@ -15,16 +20,42 @@ import lombok.NoArgsConstructor;
 public class UserEntity {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(generator="UUID")
+    @GenericGenerator(name="UUID",strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name="user_uuid", updatable = false)
+    private UUID userUuid;
 
-    @Column(name="user_name",length=50,nullable=false)
+    @Column(name="name",length=50, nullable = false)
     private String name;
 
-    @Column(name="phone_number",length=10)
-    private int phoneNumber;
+    @Column(name="user_name",length=50, nullable = false,unique = true)
+    private String username;
 
-    @Column(name="address",length=60)
+    @Column(name="mobile_number",length=10,nullable = false)
+    private long mobileNumber;
+
+    @Column(name="email_id", length=30,nullable = false,unique = true)
+    private String emailId;
+
+    @Column(name="password",length=10,nullable = false)
+    private String password;
+
+    @Column(name="address",length=50,nullable = false)
     private String address;
+
+    @Column(name="date_of_birth",nullable = false)
+    @JsonFormat(pattern = "yyyy-mm-dd")
+    private Date dateOfBirth;
+
+
+
+
+
+
+
+
+
+
+
 
 }
