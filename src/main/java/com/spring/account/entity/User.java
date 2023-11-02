@@ -17,13 +17,13 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Table(name="users")
-public class UserEntity {
+public class User {
 
     @Id
     @GeneratedValue(generator="UUID")
     @GenericGenerator(name="UUID",strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name="user_uuid", updatable = false)
-    private UUID userUuid;
+    @Column(name="user_id", updatable = false)
+    private UUID userId;
 
     @Column(name="name",length=50, nullable = false)
     private String name;
