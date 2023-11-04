@@ -27,6 +27,13 @@ public class Account {
     @ManyToMany
     private List<UserAuthentication> userAuthentication;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name="mode_of_operation")
+    private List<ModeOFOperation> modeOFOperation;
+
     @ManyToOne
     private BankBranch bankBranch;
+
+    @OneToMany(mappedBy = "account")
+    private List<Transaction> transactions;
 }

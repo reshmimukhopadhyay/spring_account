@@ -34,4 +34,7 @@ public class BankBranch {
 
     @OneToMany(mappedBy = "bankBranch")
     private List<Account> account;
+
+    @OneToMany(mappedBy = "bankBranch")
+    private List<Transaction> transactions;
 }

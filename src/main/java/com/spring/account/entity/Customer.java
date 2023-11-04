@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Builder
@@ -16,8 +17,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="users")
-public class User {
+@Table(name="customer")
+public class Customer {
 
     @Id
     @GeneratedValue(generator="UUID")
@@ -49,6 +50,12 @@ public class User {
 
     @OneToOne(mappedBy = "user")
     private UserAuthentication userAuthentication;
+
+    @OneToMany(mappedBy = "user")
+    private List<Transaction> transaction;
+
+    @OneToOne(mappedBy = "customerId")
+    private CustomerVerification customerVerification;
 
 
 

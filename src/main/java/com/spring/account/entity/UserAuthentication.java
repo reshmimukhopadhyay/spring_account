@@ -22,7 +22,7 @@ public class UserAuthentication {
     private int customerId;
 
     @OneToOne
-    private User user;
+    private Customer user;
 
     @Column(name="username",length = 50, nullable = false)
     private String username;

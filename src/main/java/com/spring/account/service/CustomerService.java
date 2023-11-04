@@ -1,16 +1,16 @@
 package com.spring.account.service;
 
-import com.spring.account.repository.UserRepository;
+import com.spring.account.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
-public class UserService {
+public class CustomerService {
 
     @Autowired
-    UserRepository userRepository;
+    CustomerRepository userRepository;
 
     public UUID getUserUUIDByUserNameAndPassword(String username,String password){
         UUID userUUID=userRepository.getUserUUIDByNameAndPassword(username,password);
