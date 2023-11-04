@@ -1,13 +1,12 @@
 package com.spring.account.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -32,4 +31,7 @@ public class BankBranch {
 
     @Column(name="address")
     private String address;
+
+    @OneToMany(mappedBy = "bankBranch")
+    private List<Account> account;
 }

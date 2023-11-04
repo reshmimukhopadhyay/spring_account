@@ -24,6 +24,9 @@ public class Account {
     @Column(name="account_number")
     private long accountNumber;
 
-    @ManyToMany()
+    @ManyToMany
     private List<UserAuthentication> userAuthentication;
+
+    @ManyToOne
+    private BankBranch bankBranch;
 }

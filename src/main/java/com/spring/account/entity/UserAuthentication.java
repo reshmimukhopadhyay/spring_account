@@ -21,8 +21,8 @@ public class UserAuthentication {
     @Column(name="customer_id")
     private int customerId;
 
-  /*  @Column(name="user_id")
-    private User userId;*/
+    @OneToOne
+    private User user;
 
     @Column(name="username",length = 50, nullable = false)
     private String username;

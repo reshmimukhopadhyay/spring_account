@@ -22,8 +22,8 @@ public class User {
     @Id
     @GeneratedValue(generator="UUID")
     @GenericGenerator(name="UUID",strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name="user_id", updatable = false)
-    private UUID userId;
+    @Column(name="customer_id", updatable = false)
+    private UUID customerId;
 
     @Column(name="name",length=50, nullable = false)
     private String name;
@@ -46,6 +46,9 @@ public class User {
     @Column(name="date_of_birth",nullable = false)
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date dateOfBirth;
+
+    @OneToOne(mappedBy = "user")
+    private UserAuthentication userAuthentication;
 
 
 
