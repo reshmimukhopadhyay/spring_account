@@ -26,4 +26,7 @@ public class Charges {
 
     @OneToOne(mappedBy = "charges")
     private AccountType accountType;
+
+    @OneToOne(mappedBy = "charges")
+    private Facilities facilities;
 }

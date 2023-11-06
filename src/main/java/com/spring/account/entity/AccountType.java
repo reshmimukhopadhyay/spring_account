@@ -31,4 +31,7 @@ public class AccountType {
     @OneToOne
     private Charges charges;
 
+    @OneToOne(mappedBy = "accountType")
+    private Account account;
+
 }

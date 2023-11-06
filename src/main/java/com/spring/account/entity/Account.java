@@ -36,4 +36,10 @@ public class Account {
 
     @OneToMany(mappedBy = "account")
     private List<Transaction> transactions;
+
+    @OneToOne
+    private CustomerVerification customerVerification;
+
+    @OneToOne
+    private AccountType accountType;
 }

@@ -11,6 +11,6 @@ import java.util.UUID;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer,Integer> {
 
-   @Query(value="select u.customerId from Customer u where u.username=(:username) and u.password=(:password)" )
+   @Query(value="select c.customerId from Customer c where c.username=(:username) and c.password=(:password)" )
    UUID getUserUUIDByNameAndPassword(@RequestParam String username,@RequestParam String password);
 }

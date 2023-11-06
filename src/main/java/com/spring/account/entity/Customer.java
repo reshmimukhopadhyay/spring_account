@@ -48,14 +48,13 @@ public class Customer {
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date dateOfBirth;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "customer")
     private UserAuthentication userAuthentication;
 
     @OneToMany(mappedBy = "user")
     private List<Transaction> transaction;
 
-    @OneToOne(mappedBy = "customerId")
-    private CustomerVerification customerVerification;
+
 
 
 

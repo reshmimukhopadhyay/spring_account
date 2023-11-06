@@ -26,6 +26,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation group: 'org.springframework.security', name: 'spring-security-crypto', version: '6.1.5'
+	implementation group: 'com.github.ulisesbocchio', name: 'jasypt-spring-boot-starter', version: '3.0.5'
+	implementation group: 'org.jasypt', name: 'jasypt', version: '1.9.2'
+
+
 
 
 	compileOnly 'org.projectlombok:lombok'

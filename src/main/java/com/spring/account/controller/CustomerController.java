@@ -1,6 +1,7 @@
 package com.spring.account.controller;
 
 import com.spring.account.entity.Customer;
+import com.spring.account.entity.UserAuthentication;
 import com.spring.account.repository.CustomerRepository;
 import com.spring.account.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,24 +13,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/customer")
+public class CustomerController {
 
     @Autowired
-    CustomerRepository userRepository;
+    CustomerRepository customerRepository;
 
     @Autowired
-    CustomerService userService;
+    CustomerService customerService;
 
     @PostMapping("/register")
-    public ResponseEntity<Customer> register(@RequestBody Customer user){
-        //String encodedPassword=
-        userRepository.save(user);
+    public ResponseEntity<Customer> register(@RequestBody Customer customer){
+        customerRepository.save(customer);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/login")
     public UUID login(@RequestParam String username, @RequestParam String password){
-        return userService.getUserUUIDByUserNameAndPassword(username,password);
+        return customerService.getUserUUIDByUserNameAndPassword(username,password);
     }
 }

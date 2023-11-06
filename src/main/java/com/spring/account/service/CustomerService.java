@@ -10,10 +10,10 @@ import java.util.UUID;
 public class CustomerService {
 
     @Autowired
-    CustomerRepository userRepository;
+    CustomerRepository customerRepository;
 
     public UUID getUserUUIDByUserNameAndPassword(String username,String password){
-        UUID userUUID=userRepository.getUserUUIDByNameAndPassword(username,password);
+        UUID userUUID=customerRepository.getUserUUIDByNameAndPassword(username,password);
         return userUUID;
     }
 }

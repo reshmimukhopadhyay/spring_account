@@ -16,13 +16,13 @@ import java.util.List;
 @Table(name="user_authentication")
 public class UserAuthentication {
 
-    @Id
+   /* @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="customer_id")
-    private int customerId;
-
+    private int customerId;*/
+    @Id
     @OneToOne
-    private Customer user;
+    private Customer customer;
 
     @Column(name="username",length = 50, nullable = false)
     private String username;

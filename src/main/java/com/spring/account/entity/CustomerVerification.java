@@ -22,7 +22,15 @@ public class CustomerVerification {
 
     @OneToOne
     private Customer customer;
+
+    @Column(name="pan_no.")
     private String pan;
+    @Column(name="adhaar")
     private Long adhaar;
+    @Enumerated(EnumType.STRING)
+    @Column(name="verification_status")
     private VerificationStatus verificationStatus;
+
+    @OneToOne(mappedBy = "customerVerification")
+    private Account account;
 }
