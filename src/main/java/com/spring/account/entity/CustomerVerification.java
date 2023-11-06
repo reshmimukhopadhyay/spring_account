@@ -1,6 +1,7 @@
 package com.spring.account.entity;
 
 
+import com.spring.account.enums.VerificationStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,12 +21,13 @@ public class CustomerVerification {
     @Column(name="verification_id")
     private int verificationId;
 
-    @OneToOne
+    @OneToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="customer_id")
     private Customer customer;
 
-    @Column(name="pan_no.")
+    @Column(name="pan_no.",nullable = false)
     private String pan;
-    @Column(name="adhaar")
+    @Column(name="adhaar",nullable = false)
     private Long adhaar;
     @Enumerated(EnumType.STRING)
     @Column(name="verification_status")

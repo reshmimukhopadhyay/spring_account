@@ -1,4 +1,4 @@
-package com.spring.account.entity;
+package com.spring.account.enums;
 
 public enum TransactionType {
 

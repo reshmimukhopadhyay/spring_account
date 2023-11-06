@@ -38,7 +38,7 @@ public class Customer {
     @Column(name="email_id", length=30,nullable = false,unique = true)
     private String emailId;
 
-    @Column(name="password",length=10,nullable = false)
+    @Column(name="password",nullable = false)
     private String password;
 
     @Column(name="address",length=50,nullable = false)

@@ -1,5 +1,6 @@
 package com.spring.account.entity;
 
+import com.spring.account.enums.ModeOFOperation;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,8 +39,10 @@ public class Account {
     private List<Transaction> transactions;
 
     @OneToOne
+    @JoinColumn(name="verification_id")
     private CustomerVerification customerVerification;
 
     @OneToOne
+    @JoinColumn(name="account_type_id")
     private AccountType accountType;
 }

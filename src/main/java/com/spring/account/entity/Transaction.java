@@ -1,5 +1,6 @@
 package com.spring.account.entity;
 
+import com.spring.account.enums.TransactionType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

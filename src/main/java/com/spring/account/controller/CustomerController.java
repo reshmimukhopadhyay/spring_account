@@ -24,7 +24,7 @@ public class CustomerController {
 
     @PostMapping("/register")
     public ResponseEntity<Customer> register(@RequestBody Customer customer){
-        customerRepository.save(customer);
+        customerService.registerCustomer(customer);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -32,4 +32,6 @@ public class CustomerController {
     public UUID login(@RequestParam String username, @RequestParam String password){
         return customerService.getUserUUIDByUserNameAndPassword(username,password);
     }
+
+
 }
