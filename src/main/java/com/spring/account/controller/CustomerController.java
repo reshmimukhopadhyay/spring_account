@@ -3,6 +3,7 @@ package com.spring.account.controller;
 import com.spring.account.entity.Customer;
 import com.spring.account.entity.UserAuthentication;
 import com.spring.account.repository.CustomerRepository;
+import com.spring.account.repository.UserAuthenticationRepository;
 import com.spring.account.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,10 +29,10 @@ public class CustomerController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/login")
-    public UUID login(@RequestParam String username, @RequestParam String password){
-        return customerService.getUserUUIDByUserNameAndPassword(username,password);
-    }
+    /*@GetMapping("/login")
+    public UUID login(@RequestBody Customer customer){
+        return customerService.getUserUUIDByUserNameAndPassword(customer);
+    }*/
 
 
 }

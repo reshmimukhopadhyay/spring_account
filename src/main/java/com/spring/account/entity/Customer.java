@@ -26,45 +26,30 @@ public class Customer {
     @Column(name="customer_id", updatable = false)
     private UUID customerId;
 
-    @Column(name="name",length=50, nullable = false)
+    @Column(name="name",length=50)
     private String name;
 
-    @Column(name="user_name",length=50, nullable = false,unique = true)
-    private String username;
+    @Column(name="mobile_number",length=10)
+    private Long mobileNumber;
 
-    @Column(name="mobile_number",length=10,nullable = false)
-    private long mobileNumber;
-
-    @Column(name="email_id", length=30,nullable = false,unique = true)
+    @Column(name="email_id", length=30,unique = true)
     private String emailId;
 
-    @Column(name="password",nullable = false)
-    private String password;
-
-    @Column(name="address",length=50,nullable = false)
+    @Column(name="address",length=50)
     private String address;
 
-    @Column(name="date_of_birth",nullable = false)
+    @Column(name="date_of_birth")
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date dateOfBirth;
 
-    @OneToOne(mappedBy = "customer")
+    @OneToOne(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private UserAuthentication userAuthentication;
 
     @OneToMany(mappedBy = "user")
     private List<Transaction> transaction;
 
+    public Customer(UserAuthentication saveUserAuthentication) {
+        this.userAuthentication= saveUserAuthentication;
 
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 }
