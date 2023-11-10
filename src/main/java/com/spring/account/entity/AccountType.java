@@ -17,21 +17,27 @@ public class AccountType {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="account_type_id")
-    private int account_type_id;
+    private Integer accountTypeId;
 
-    @Column(name="account_type")
+    @Column(name="account_type",nullable = false)
     private String accountType;
 
-    @Column(name="monthly_avg_balance")
-    private int monthlyAvgBalance;
+    @Column(name="monthly_avg_balance",nullable = false)
+    private Integer monthlyAvgBalance;
 
-    @OneToOne
-    private InterestRate interestRate;
+    /*@OneToOne
+    private InterestRate interestRate;*/
 
-    @OneToOne
-    private Charges charges;
+    @Column(name="rate_of_interest_%",nullable = false)
+    private Integer interestRate;
 
-    @OneToOne(mappedBy = "accountType")
-    private Account account;
+    /*@OneToOne
+    private Charges charges;*/
+
+    @Column(name="charge",nullable = false)
+    private Integer charges;
+
+    /*@OneToOne(mappedBy = "accountType")
+    private Account account;*/
 
 }

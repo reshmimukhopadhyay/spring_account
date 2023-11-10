@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,27 +23,42 @@ public class Account {
     @Column(name="account_id")
     private int accountId;
 
-    @Column(name="account_number")
+    @Column(name="account_number",unique=true)
     private long accountNumber;
 
-    @ManyToMany
-    private List<UserAuthentication> userAuthentication;
+    /*@ManyToMany
+    private List<UserAuthentication> userAuthentication;*/
 
-    @Enumerated(EnumType.STRING)
+    @Column(name="user_auth_id")
+    private Integer userAuthenticationId;
+
+    @Column(name="customer_id")
+    private UUID customerId;
+
+    /*@Enumerated(EnumType.STRING)
     @Column(name="mode_of_operation")
-    private List<ModeOFOperation> modeOFOperation;
+    private List<ModeOFOperation> modeOFOperation;*/
 
-    @ManyToOne
-    private BankBranch bankBranch;
+   /* @ManyToOne
+    private BankBranch bankBranch;*/
 
-    @OneToMany(mappedBy = "account")
-    private List<Transaction> transactions;
+    @Column(name="branch_code")
+    private Integer branchCode;
 
-    @OneToOne
+    /*@OneToMany(mappedBy = "account")
+    private List<Transaction> transactions;*/
+
+    /*@OneToOne
     @JoinColumn(name="verification_id")
     private CustomerVerification customerVerification;
+*/
+    @Column(name="kyc_updated")
+    private boolean kycUpdated;
 
-    @OneToOne
+   /* @OneToOne
     @JoinColumn(name="account_type_id")
-    private AccountType accountType;
+    private AccountType accountType;*/
+
+    @Column(name="account_type")
+    private String accountType;
 }

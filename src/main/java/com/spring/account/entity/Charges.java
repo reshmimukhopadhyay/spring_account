@@ -24,8 +24,8 @@ public class Charges {
     @Column(name="charges")
     private int chargeAmount;
 
-    @OneToOne(mappedBy = "charges")
-    private AccountType accountType;
+    /*@OneToOne(mappedBy = "charges")
+    private AccountType accountType;*/
 
     @OneToOne(mappedBy = "charges")
     private Facilities facilities;

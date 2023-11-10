@@ -42,14 +42,14 @@ public class Customer {
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date dateOfBirth;
 
-    @OneToOne(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private UserAuthentication userAuthentication;
+    /*@OneToOne(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private UserAuthentication userAuthentication;*/
 
     @OneToMany(mappedBy = "user")
     private List<Transaction> transaction;
 
-    public Customer(UserAuthentication saveUserAuthentication) {
+    /*public Customer(UserAuthentication saveUserAuthentication) {
         this.userAuthentication= saveUserAuthentication;
 
-    }
+    }*/
 }

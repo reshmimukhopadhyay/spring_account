@@ -32,9 +32,9 @@ public class BankBranch {
     @Column(name="address")
     private String address;
 
-    @OneToMany(mappedBy = "bankBranch")
-    private List<Account> account;
+    /*@OneToMany(mappedBy = "bankBranch")
+    private List<Account> account;*/
 
-    @OneToMany(mappedBy = "bankBranch")
-    private List<Transaction> transactions;
+    /*@OneToMany(mappedBy = "bankBranch")
+    private List<Transaction> transactions;*/
 }

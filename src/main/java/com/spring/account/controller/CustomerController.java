@@ -25,7 +25,7 @@ public class CustomerController {
 
     @PostMapping("/register")
     public ResponseEntity<Customer> register(@RequestBody Customer customer){
-        customerService.registerCustomer(customer);
+        customerRepository.save(customer);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

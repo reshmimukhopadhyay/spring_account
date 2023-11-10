@@ -33,6 +33,6 @@ public class CustomerVerification {
     @Column(name="verification_status")
     private VerificationStatus verificationStatus;
 
-    @OneToOne(mappedBy = "customerVerification")
-    private Account account;
+   /* @OneToOne(mappedBy = "customerVerification")
+    private Account account;*/
 }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 
@@ -23,18 +24,20 @@ public class UserAuthentication  {
     @Column(name="user_auth_id")
     private Integer userAuthId;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="customer_id",referencedColumnName = "customer_id")
-    private Customer customer;
+    /*@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="customer_id",referencedColumnName = "customer_id")*/
 
-    @Column(name="username",length = 50)
+    @Column(name="customer_Id")
+    private UUID customerId;
+
+    @Column(name="username",length = 50, unique = true, nullable = false)
     private String username;
 
-    @Column(name="password",length = 10)
+    @Column(name="password", nullable = false)
     private String password;
 
-    @ManyToMany(mappedBy = "userAuthentication")
-    private List<Account> account;
+    /*@ManyToMany(mappedBy = "userAuthentication")
+    private List<Account> account;*/
 
 
 }
