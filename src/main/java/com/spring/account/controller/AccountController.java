@@ -31,4 +31,5 @@ public class AccountController {
     public Account findAccountDetailsByCustomerId(@PathVariable UUID customerId){
         return accountRepository.findAccountByCustomerId(customerId);
     }
+
 }
