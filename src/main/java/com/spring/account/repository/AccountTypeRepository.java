@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -18,7 +19,8 @@ public interface AccountTypeRepository extends JpaRepository<AccountType,Integer
 
     @Modifying
     @Query(value="update AccountType at set at.charges=:charges, at.interestRate=:interestRate, at.monthlyAvgBalance=:monthlyAvgBalance where at.accountTypeId=:accountTypeId")
-    Void updateAccountCharges(@RequestBody Integer charges, @RequestBody Integer interestRate, @RequestBody Integer monthlyAvgBalance, @RequestBody Integer accountTypeId);
+    Void  updateAccountType(@RequestBody AccountType accountType, @PathVariable int accountTypeId);
 
 
+    void deleteAccountTypeByAccountTypeId(@PathVariable int accountTypeId);
 }

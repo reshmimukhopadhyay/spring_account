@@ -16,7 +16,7 @@ public class AccountType {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name="account_type_id")
+    @Column(name="account_type_id",updatable = false)
     private Integer accountTypeId;
 
     @Column(name="account_type",nullable = false)

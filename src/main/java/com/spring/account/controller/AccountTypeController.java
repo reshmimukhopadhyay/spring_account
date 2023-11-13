@@ -2,10 +2,13 @@ package com.spring.account.controller;
 
 import com.spring.account.entity.AccountType;
 import com.spring.account.repository.AccountTypeRepository;
+import com.spring.account.service.AccountTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value="/customer/accountType")
@@ -14,14 +17,22 @@ public class AccountTypeController {
     @Autowired
     AccountTypeRepository accountTypeRepository;
 
+    @Autowired
+    AccountTypeService accountTypeService;
+
     @PostMapping("/addAccountType")
     public ResponseEntity<AccountType> addAccountType(@RequestBody AccountType accountType){
         accountTypeRepository.save(accountType);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/getAllAccountType")
+    public List<AccountType> getListOfAccountType(){
+        return accountTypeRepository.findAll();
+    }
+
     @GetMapping("/getAccountTypeDetails/{accountTypeId}")
-    public AccountType findAccountTypeDetails(@PathVariable Integer accountTypeId){
+    public AccountType findAccountTypeDetails(@PathVariable int accountTypeId){
         return accountTypeRepository.findAccountTypeByAccountTypeId(accountTypeId);
     }
 
@@ -32,9 +43,14 @@ public class AccountTypeController {
     }
 
     @PutMapping("/updateAccountTypeDetails/{accountTypeId}")
-    public String updateAccountTypeFields(@PathVariable Integer accountTypeId){
-        accountTypeRepository.updateAccountCharges(charges,interestRate,monthlyAvgBalance,accountTypeId);
-        return "Data updated Successfully";
+    public AccountType updateAccountTypeFields(@RequestBody AccountType accountType, @PathVariable Integer accountTypeId){
+        accountTypeService.updateAccountTypeDetailsByAccountTypeId(accountType,accountTypeId);
+        return accountType;
+    }
+
+    @DeleteMapping("/deleteAccountType/{accountTypeId}")
+    public void deleteAccountTypeById(@PathVariable int accountTypeId){
+        accountTypeService.deleteAccountTypeByAccountTypeId(accountTypeId);
     }
 
 }
