@@ -5,6 +5,8 @@ import com.spring.account.repository.ChargesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ChargesService {
 
@@ -16,12 +18,9 @@ public class ChargesService {
     }
 
 
-    public Charges getChargesByAmount(int chargesAmount){
+    public List<Charges> getChargesByAmount(int chargesAmount){
         return chargesRepository.getChargesByChargeAmount(chargesAmount);
     }
 
 
-    public Charges getChargesByChargesType(String chargesType){
-        return chargesRepository.getChargesByChargesType(chargesType);
-    }
 }

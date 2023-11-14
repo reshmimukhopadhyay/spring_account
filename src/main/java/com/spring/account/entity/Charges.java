@@ -15,14 +15,20 @@ import lombok.NoArgsConstructor;
 public class Charges {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name="charges_id")
+    @Column(name="charges_id",unique = true)
     private int chargesId;
 
-    @Column(name="charges_type")
-    private String ChargesType;
+    @Column(name="charges_type",nullable = false)
+    private String chargesType;
 
-    @Column(name="charges")
+    @Column(name="charges",nullable = false)
     private int chargeAmount;
+
+    @Column(name="account_type",nullable = false)
+    private String accountType;
+
+    @Column(name="facilities",nullable = false)
+    private String facilities;
 
     /*@OneToOne(mappedBy = "charges")
     private AccountType accountType;*/

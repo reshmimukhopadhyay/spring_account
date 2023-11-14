@@ -22,7 +22,7 @@ public class BankBranchController {
     BankBranchService bankBranchService;
 
     @PostMapping("/addBranch")
-    public ResponseEntity<BankBranch> addBankBranch(BankBranch bankBranch){
+    public ResponseEntity<BankBranch> addBankBranch(@RequestBody BankBranch bankBranch){
         bankBranchRepository.save(bankBranch);
         return new ResponseEntity<>(HttpStatus.OK);
     }
