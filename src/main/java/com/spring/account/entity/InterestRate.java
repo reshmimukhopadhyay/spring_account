@@ -23,7 +23,7 @@ public class InterestRate {
     private int accountBalance;
 
     @Column(name="roi_per_annum")
-    private int rateOfInterestPerAnnum;
+    private int rateOfInterestPerAnum;
 
     /*@OneToOne(mappedBy = "interestRate")
     private AccountType accountType;*/

@@ -11,6 +11,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Builder
 @NoArgsConstructor
@@ -25,16 +26,23 @@ public class Transaction {
     @Column(name="transaction_id")
     private int transactionId;
 
-    @ManyToOne
-    private Account account;
-    @ManyToOne
-    private Customer user;
+    /*@ManyToOne
+    private Account account;*/
+
+    @Column(name="account_number")
+    private int accountNumber;
+    /*@ManyToOne
+    private Customer user;*/
+
+    @Column(name="customer_id")
+    private UUID customerId;
+
     @Column(name="transaction_details")
     private String transactionDetails;
 
     @Enumerated(EnumType.STRING)
     @Column(name="transaction_type")
-    private List<TransactionType> transactionType;
+    private TransactionType transactionType;
     @Column(name="credit")
     private int credit;
     @Column(name="debit")
@@ -43,10 +51,15 @@ public class Transaction {
     private int balance;
     @Column(name="currency")
     private String currency;
-    @ManyToOne
-    private BankBranch bankBranch;
-    @Column(name="created_on")
+    /*@ManyToOne
+    private BankBranch bankBranch;*/
+
+    @Column(name="bank_branch_Code")
+    private int bankBranch;
+
+
+    /*@Column(name="created_on")
     @CreationTimestamp
-    private OffsetDateTime createdOn;
+    private OffsetDateTime createdOn;*/
 
 }

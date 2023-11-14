@@ -1,5 +1,6 @@
 package com.spring.account.entity;
 
+import com.spring.account.enums.Facilities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,12 +28,11 @@ public class Charges {
     @Column(name="account_type",nullable = false)
     private String accountType;
 
+    @Enumerated(EnumType.STRING)
     @Column(name="facilities",nullable = false)
-    private String facilities;
+    private Facilities facilities;
 
     /*@OneToOne(mappedBy = "charges")
     private AccountType accountType;*/
 
-    /*@OneToOne(mappedBy = "charges")
-    private Facilities facilities;*/
 }

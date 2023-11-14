@@ -45,8 +45,8 @@ public class Customer {
     /*@OneToOne(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private UserAuthentication userAuthentication;*/
 
-    @OneToMany(mappedBy = "user")
-    private List<Transaction> transaction;
+   /* @OneToMany(mappedBy = "user")
+    private List<Transaction> transaction;*/
 
     /*public Customer(UserAuthentication saveUserAuthentication) {
         this.userAuthentication= saveUserAuthentication;

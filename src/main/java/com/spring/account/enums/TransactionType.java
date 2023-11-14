@@ -4,7 +4,7 @@ public enum TransactionType {
 
     ATM,
     CHARGE,
-    CHECK,
+    CHEQUE,
     DEPOSIT,
     ONLINE,
     POS,
