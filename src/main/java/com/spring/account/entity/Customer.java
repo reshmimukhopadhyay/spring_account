@@ -1,7 +1,11 @@
 package com.spring.account.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +13,6 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 @Builder
@@ -41,6 +44,7 @@ public class Customer {
     @Column(name="date_of_birth")
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date dateOfBirth;
+
 
     /*@OneToOne(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private UserAuthentication userAuthentication;*/

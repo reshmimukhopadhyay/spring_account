@@ -13,8 +13,12 @@ public class ChargesService {
     @Autowired
     ChargesRepository chargesRepository;
 
-    public Charges getChargesById(int chargesId){
 
+    public List<Charges> getCharges(){
+        return chargesRepository.findAll();
+    }
+
+    public Charges getChargesById(int chargesId){
         return chargesRepository.getChargesByChargesId(chargesId);
     }
 
