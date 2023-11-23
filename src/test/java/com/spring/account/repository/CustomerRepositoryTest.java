@@ -65,4 +65,23 @@ public class CustomerRepositoryTest {
 
         Assertions.assertThat(customerEmail.getEmailId()).isEqualTo("reshmi@gmail.com");
     }
+
+
+    @Test
+    public void customerRepository_UpdateCustomer_ReturnUpdatedCustomerNotNull(){
+        Customer customer = Customer.builder().name("Reshmi").emailId("reshmi@gmail.com").address("test address").build();
+
+        customerRepository.save(customer);
+
+        Customer savedCustomer = customerRepository.findById(customer.getCustomerId()).get();
+
+        savedCustomer.setAddress("Test1 address");
+
+        Customer updatedCustomer = customerRepository.save(savedCustomer);
+
+        Assertions.assertThat(updatedCustomer.getAddress()).isNotNull();
+        Assertions.assertThat(updatedCustomer.getAddress()).isEqualTo("Test1 address");
+    }
+
+
 }
