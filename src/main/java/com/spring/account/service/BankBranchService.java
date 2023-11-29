@@ -16,7 +16,7 @@ public class BankBranchService {
     BankBranchRepository bankBranchRepository;
 
     List<BankBranch> branchList = new ArrayList<>();
-    public void updateBranchDetails(BankBranch bankBranch, int branchCode){
+    public void updateBranchDetails(BankBranch bankBranch, long branchCode){
 
         branchList.stream().map(bankBranchDetails->{
             if(bankBranchDetails.getBranchCode()==branchCode){

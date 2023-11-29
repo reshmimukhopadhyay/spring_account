@@ -3,7 +3,6 @@ package com.spring.account.controller;
 import com.spring.account.entity.BankBranch;
 import com.spring.account.repository.BankBranchRepository;
 import com.spring.account.service.BankBranchService;
-import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +27,7 @@ public class BankBranchController {
     }
 
     @GetMapping("/getBranchDetails/{branchCode}")
-    public BankBranch getBankBranchById(@PathVariable int branchCode){
+    public BankBranch getBankBranchById(@PathVariable long branchCode){
         return bankBranchRepository.findBankBranchByBranchCode(branchCode);
     }
 
@@ -38,7 +37,7 @@ public class BankBranchController {
     }
 
     @PutMapping("/updateBankBranch/{branchCode}")
-    public BankBranch updateBankBranch(@RequestBody BankBranch bankBranch, @PathVariable int branchCode){
+    public BankBranch updateBankBranch(@RequestBody BankBranch bankBranch, @PathVariable long branchCode){
         bankBranchService.updateBranchDetails(bankBranch,branchCode);
         return bankBranch;
     }

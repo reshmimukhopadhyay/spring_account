@@ -14,6 +14,10 @@ public class ChargesService {
     ChargesRepository chargesRepository;
 
 
+    public Charges createCharges(Charges charges){
+        return chargesRepository.save(charges);
+    }
+
     public List<Charges> getCharges(){
         return chargesRepository.findAll();
     }

@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BankBranchRepository extends JpaRepository<BankBranch,Integer> {
 
-    BankBranch findBankBranchByBranchCode(int branchCode);
+    BankBranch findBankBranchByBranchCode(long branchCode);
 }
