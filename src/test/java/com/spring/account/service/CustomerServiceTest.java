@@ -10,6 +10,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,6 +35,26 @@ public class CustomerServiceTest {
         Assertions.assertThat(savedCustomer).isNotNull();
     }
 
-    public
+    @Test
+    public void customerService_findAllCustomer_ReturnListOfCustomer(){
+        Customer customer1 = Customer.builder().name("Reshmi").emailId("reshmi@gmail.com").address("test address").build();
+        Customer customer2 = Customer.builder().name("Nanda").emailId("nanda@gmail.com").address("test address").build();
+        when(customerRepository.findAll()).thenReturn(List.of(customer1,customer2));
+
+        List<Customer> savedCustomer =customerService.findAllCustomer();
+        Assertions.assertThat(savedCustomer.size()).isEqualTo(2);
+    }
+
+    @Test
+    public void customerService_FindCustomerById_ReturnCustomerNotNull(){
+        UUID customerId = UUID.randomUUID();
+        Customer customer= Customer.builder().name("Reshmi").emailId("reshmi@gmail.com").address("test address").build();
+
+        when(customerRepository.findById(customerId)).thenReturn(Optional.ofNullable(customer));
+
+        Optional<Customer> savedCustomer = customerService.findCustomerById(customerId);
+
+        Assertions.assertThat(savedCustomer).isNotNull();
+    }
 
 }
