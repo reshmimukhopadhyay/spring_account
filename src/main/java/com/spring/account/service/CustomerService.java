@@ -1,11 +1,8 @@
 package com.spring.account.service;
 
 import com.spring.account.entity.Customer;
-import com.spring.account.entity.UserAuthentication;
 import com.spring.account.repository.CustomerRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,6 +12,9 @@ public class CustomerService {
     CustomerRepository customerRepository;
 
 
+    public Customer saveCustomer(Customer customer){
+       return customerRepository.save(customer);
+    }
 
     /*@Transactional
     public Customer registerCustomer(Customer customer) {
