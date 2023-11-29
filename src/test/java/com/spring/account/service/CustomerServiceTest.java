@@ -57,4 +57,15 @@ public class CustomerServiceTest {
         Assertions.assertThat(savedCustomer).isNotNull();
     }
 
+    @Test
+    public void customerService_FindCustomerByEmailId_ReturnCustomerNotNull(){
+        String customerEmail = "reshmi@gmail.com";
+        Customer customer = Customer.builder().name("Reshmi").emailId("reshmi@gmail.com").address("test address").build();
+        when(customerRepository.findCustomerByEmailId(customerEmail)).thenReturn(Optional.ofNullable(customer));
+
+        Optional<Customer> savedCustomer = customerService.findCustomerByEmailId(customerEmail);
+
+        Assertions.assertThat(savedCustomer).isNotNull();
+    }
+
 }

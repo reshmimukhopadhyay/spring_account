@@ -28,6 +28,10 @@ public class CustomerService {
         return customerRepository.findCustomerById(customerId);
     }
 
+    public Optional<Customer> findCustomerByEmailId(String emailId){
+        return customerRepository.findCustomerByEmailId(emailId);
+    }
+
     /*@Transactional
     public Customer registerCustomer(Customer customer) {
        // BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder()
