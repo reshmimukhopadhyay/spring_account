@@ -13,11 +13,15 @@ import org.springframework.web.bind.annotation.*;
 public class InterestRateController {
 
 
-    @Autowired
+
     InterestRateRepository interestRateRepository;
+    InterestRateService interestRateService;
 
     @Autowired
-    InterestRateService interestRateService;
+    public InterestRateController(InterestRateRepository interestRateRepository,InterestRateService interestRateService){
+        this.interestRateRepository=interestRateRepository;
+        this.interestRateService=interestRateService;
+    }
 
     @PostMapping("/addInterestRate")
     public ResponseEntity<InterestRate> addInterestRate(InterestRate interestRate){

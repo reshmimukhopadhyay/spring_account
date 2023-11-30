@@ -14,11 +14,15 @@ import java.util.List;
 @RequestMapping(value="/customer/bankbranch")
 public class BankBranchController {
 
-    @Autowired
+
     BankBranchRepository bankBranchRepository;
+    BankBranchService bankBranchService;
 
     @Autowired
-    BankBranchService bankBranchService;
+    public BankBranchController(BankBranchRepository bankBranchRepository,BankBranchService bankBranchService){
+        this.bankBranchRepository = bankBranchRepository;
+        this.bankBranchService = bankBranchService;
+    }
 
     @PostMapping("/addBranch")
     public ResponseEntity<BankBranch> addBankBranch(@RequestBody BankBranch bankBranch){

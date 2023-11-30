@@ -12,8 +12,13 @@ import java.util.UUID;
 @Service
 public class CustomerService {
 
-    @Autowired
+
     CustomerRepository customerRepository;
+
+    @Autowired
+    public CustomerService(CustomerRepository customerRepository){
+        this.customerRepository=customerRepository;
+    }
 
 
     public Customer saveCustomer(Customer customer){
@@ -25,7 +30,7 @@ public class CustomerService {
     }
 
     public Optional<Customer> findCustomerById(UUID customerId){
-        return customerRepository.findCustomerById(customerId);
+        return customerRepository.findCustomerByCustomerId(customerId);
     }
 
     public Optional<Customer> findCustomerByEmailId(String emailId){

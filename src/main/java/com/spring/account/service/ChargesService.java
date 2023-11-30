@@ -10,8 +10,13 @@ import java.util.List;
 @Service
 public class ChargesService {
 
-    @Autowired
+
     ChargesRepository chargesRepository;
+
+    @Autowired
+    public ChargesService(ChargesRepository chargesRepository){
+        this.chargesRepository=chargesRepository;
+    }
 
 
     public Charges createCharges(Charges charges){

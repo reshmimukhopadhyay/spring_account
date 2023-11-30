@@ -14,8 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/customer")
 public class CustomerVerificationController {
 
-    @Autowired
+
     private CustomerVerificationRepository customerVerificationRepository;
+
+    @Autowired
+    public CustomerVerificationController(CustomerVerificationRepository customerVerificationRepository){
+        this.customerVerificationRepository=customerVerificationRepository;
+    }
 
     @PostMapping("/verify_customer")
     public ResponseEntity<VerificationStatus> addVerificationStatus(CustomerVerification customerVerification){

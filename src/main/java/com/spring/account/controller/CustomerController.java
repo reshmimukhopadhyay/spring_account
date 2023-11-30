@@ -1,27 +1,30 @@
 package com.spring.account.controller;
 
 import com.spring.account.entity.Customer;
-import com.spring.account.entity.UserAuthentication;
 import com.spring.account.repository.CustomerRepository;
-import com.spring.account.repository.UserAuthenticationRepository;
 import com.spring.account.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-
-import java.util.UUID;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
 
-    @Autowired
+
     CustomerRepository customerRepository;
 
-    @Autowired
     CustomerService customerService;
+
+    @Autowired
+    public CustomerController(CustomerRepository customerRepository,CustomerService customerService){
+        this.customerRepository = customerRepository;
+        this.customerService = customerService;
+    }
 
     @PostMapping("/register")
     public ResponseEntity<Customer> register(@RequestBody Customer customer){

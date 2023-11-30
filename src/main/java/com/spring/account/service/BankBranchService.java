@@ -12,8 +12,12 @@ import java.util.stream.Collectors;
 @Service
 public class BankBranchService {
 
-    @Autowired
     BankBranchRepository bankBranchRepository;
+
+    @Autowired
+    public BankBranchService(BankBranchRepository bankBranchRepository){
+        this.bankBranchRepository = bankBranchRepository;
+    }
 
     List<BankBranch> branchList = new ArrayList<>();
     public void updateBranchDetails(BankBranch bankBranch, long branchCode){

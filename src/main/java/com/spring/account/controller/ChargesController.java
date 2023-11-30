@@ -15,11 +15,15 @@ import java.util.List;
 @RequestMapping(value="/customer/bankCharges")
 public class ChargesController {
 
-    @Autowired
+
     ChargesRepository chargesRepository;
+    ChargesService chargesService;
 
     @Autowired
-    ChargesService chargesService;
+    public ChargesController(ChargesRepository chargesRepository,ChargesService chargesService){
+        this.chargesRepository = chargesRepository;
+        this.chargesService = chargesService;
+    }
 
     @PostMapping("/addCharges")
     public ResponseEntity<Charges> addCharges(@RequestBody Charges charges){

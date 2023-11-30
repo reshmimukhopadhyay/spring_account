@@ -1,7 +1,5 @@
 package com.spring.account.service;
 
-import com.spring.account.controller.UserAuthenticationController;
-import com.spring.account.entity.Customer;
 import com.spring.account.entity.UserAuthentication;
 import com.spring.account.repository.UserAuthenticationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +12,13 @@ import java.util.UUID;
 @Service
 public class UserAuthenticationService {
 
-    @Autowired
+
     UserAuthenticationRepository userAuthenticationRepository;
+
+    @Autowired
+    public UserAuthenticationService(UserAuthenticationRepository userAuthenticationRepository){
+        this.userAuthenticationRepository=userAuthenticationRepository;
+    }
 
     public UserAuthentication registerUsernameAndPassword(UserAuthentication userAuthentication){
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();

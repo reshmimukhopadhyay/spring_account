@@ -1,7 +1,7 @@
 package com.spring.account.controller;
 
 import com.spring.account.entity.Account;
-import com.spring.account.repository.AccountRepository;
+import com.spring.account.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,23 +13,30 @@ import java.util.UUID;
 @RequestMapping(value="/customer/account")
 public class AccountController {
 
+
+    private AccountService accountService;
+
     @Autowired
-    AccountRepository accountRepository;
+    public AccountController(AccountService accountService){
+        this.accountService=accountService;
+    }
+
+
 
     @PostMapping("/createAccount")
     public ResponseEntity<Account> addAccount(@RequestBody Account account){
-        accountRepository.save(account);
+        accountService.createAccount(account);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/accountDetailsByAccountNumber/{accountNumber}")
     public Account findAccountDetailsByAccountNumber(@PathVariable Long accountNumber){
-        return accountRepository.findAccountByAccountNumber(accountNumber);
+        return accountService.findAccountByAccountNumber(accountNumber);
     }
 
     @GetMapping("/accountDetailsByCustomerId/{customerId}")
     public Account findAccountDetailsByCustomerId(@PathVariable UUID customerId){
-        return accountRepository.findAccountByCustomerId(customerId);
+        return accountService.findAccountByCustomerId(customerId);
     }
 
 }

@@ -11,8 +11,13 @@ import java.util.Optional;
 @Service
 public class CustomerVerificationService {
 
-    @Autowired
+
     private CustomerVerificationRepository customerVerificationRepository;
+
+    @Autowired
+    public CustomerVerificationService(CustomerVerificationRepository customerVerificationRepository){
+        this.customerVerificationRepository=customerVerificationRepository;
+    }
 
     public String verifyCustomer(CustomerVerification customerVerification){
         Optional<CustomerVerification> verifiedCustomer= customerVerificationRepository.findById(customerVerification.getVerificationId());

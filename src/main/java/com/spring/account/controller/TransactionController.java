@@ -12,11 +12,16 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value="/customer/bankTransaction")
 public class TransactionController {
 
-    @Autowired
+
     TransactionRepository transactionRepository;
+    TransactionService transactionService;
 
     @Autowired
-    TransactionService transactionService;
+    public TransactionController(TransactionRepository transactionRepository,TransactionService transactionService){
+        this.transactionRepository=transactionRepository;
+        this.transactionService=transactionService;
+
+    }
 
     @PostMapping("/createTransaction")
     public ResponseEntity<Transaction> addTransaction(@RequestBody Transaction transaction){

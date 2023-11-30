@@ -14,11 +14,15 @@ import java.util.List;
 @RequestMapping(value="/customer/accountType")
 public class AccountTypeController {
 
-    @Autowired
+
     AccountTypeRepository accountTypeRepository;
+    AccountTypeService accountTypeService;
 
     @Autowired
-    AccountTypeService accountTypeService;
+    public AccountTypeController(AccountTypeRepository accountTypeRepository,AccountTypeService accountTypeService){
+        this.accountTypeService = accountTypeService;
+        this.accountTypeRepository = accountTypeRepository;
+    }
 
     @PostMapping("/addAccountType")
     public ResponseEntity<AccountType> addAccountType(@RequestBody AccountType accountType){
