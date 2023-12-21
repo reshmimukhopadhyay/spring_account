@@ -33,11 +33,13 @@ public class ChargesController {
 
     @GetMapping("/getAllCharges")
     public List<Charges> getListOfCharges(){
+
         return chargesRepository.findAll();
     }
 
     @GetMapping("/getChargesById/{chargesId}")
     public Charges getChargesById(@PathVariable int chargesId){
+
         return chargesService.getChargesById(chargesId);
     }
 

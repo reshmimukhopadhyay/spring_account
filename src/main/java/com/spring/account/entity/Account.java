@@ -1,13 +1,11 @@
 package com.spring.account.entity;
 
-import com.spring.account.enums.ModeOFOperation;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -23,16 +21,16 @@ public class Account {
     @Column(name="account_id")
     private int accountId;
 
-    @Column(name="account_number",unique=true)
-    private long accountNumber;
+    @Column(name="account_number",nullable = false,unique=true,length = 10)
+    private Integer accountNumber;
 
     /*@ManyToMany
     private List<UserAuthentication> userAuthentication;*/
 
-    @Column(name="user_auth_id")
+    @Column(name="user_auth_id",nullable = false)
     private Integer userAuthenticationId;
 
-    @Column(name="customer_id")
+    @Column(name="customer_id",nullable = false)
     private UUID customerId;
 
     /*@Enumerated(EnumType.STRING)
@@ -42,8 +40,8 @@ public class Account {
    /* @ManyToOne
     private BankBranch bankBranch;*/
 
-    @Column(name="branch_code")
-    private Integer branchCode;
+    @Column(name="branch_code",nullable = false)
+    private String branchCode;
 
     /*@OneToMany(mappedBy = "account")
     private List<Transaction> transactions;*/

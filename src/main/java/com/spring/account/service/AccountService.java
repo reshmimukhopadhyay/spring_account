@@ -4,7 +4,6 @@ import com.spring.account.entity.Account;
 import com.spring.account.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.UUID;
 
@@ -15,19 +14,34 @@ public class AccountService {
 
     @Autowired
     public AccountService(AccountRepository accountRepository){
+
         this.accountRepository=accountRepository;
     }
 
-    public Account createAccount(Account account){
-        return accountRepository.save(account);
+    public Account createAccount(Account account) throws Exception {
+        if(account.getAccountNumber()!=null && account.getBranchCode()!=null && account.getCustomerId()!=null && account.getUserAuthenticationId()!=null) {
+            return accountRepository.save(account);
+        }else{
+            throw new RuntimeException("Field should not be null");
+        }
 
     }
 
-    public Account findAccountByAccountNumber(Long accountNumber){
-       return accountRepository.findAccountByAccountNumber(accountNumber);
-    }
+    public Account findAccountByAccountNumber(Integer accountNumber) {
+        if(accountNumber!=null) {
+            return accountRepository.findAccountByAccountNumber(accountNumber);
+        }else{
+            throw new RuntimeException("Account Number should not be null");
+        }
+       }
 
-    public Account findAccountByCustomerId(@RequestParam UUID customerId){
-        return accountRepository.findAccountByCustomerId(customerId);
+    public Account findAccountByCustomerId(UUID customerId){
+        if(!customerId.toString().isEmpty() && !customerId.toString().isBlank()) {
+            return accountRepository.findAccountByCustomerId(customerId);
+        }else if(customerId.toString()!=null){
+            return accountRepository.findAccountByCustomerId(customerId);
+        }else{
+            throw new RuntimeException("Customer Id should not be null");
+        }
     }
 }

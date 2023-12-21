@@ -40,6 +40,14 @@ public class ChargesServiceTest {
         Assertions.assertThat(savedCharges).isNotNull();
     }
 
+    @Test
+    public void chargesService_CreateCharges_ReturnNull(){
+        Charges charges = Charges.builder().chargesType("Visa Card").chargeAmount(200).accountType("Savings").facilities(DEBIT_CARD).build();
+        when(chargesRepository.save(charges)).thenReturn(null);
+        Charges savedCharges= chargesService.createCharges(charges);
+        Assertions.assertThat(savedCharges).isNull();
+    }
+
 
     @Test
     public void chargesService_GetAllCharges_ReturnAllCharges(){

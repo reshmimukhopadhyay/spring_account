@@ -10,7 +10,7 @@ import java.util.UUID;
 @Repository
 public interface AccountRepository extends JpaRepository<Account,Integer> {
 
-    Account findAccountByAccountNumber(@RequestParam Long accountNumber);
+    Account findAccountByAccountNumber(@RequestParam Integer accountNumber);
 
     Account findAccountByCustomerId(@RequestParam UUID customerId);
 }
