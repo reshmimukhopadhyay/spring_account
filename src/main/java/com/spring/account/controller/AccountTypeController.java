@@ -6,6 +6,7 @@ import com.spring.account.service.AccountTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,17 +16,20 @@ import java.util.List;
 public class AccountTypeController {
 
 
-    AccountTypeRepository accountTypeRepository;
-    AccountTypeService accountTypeService;
+    @Autowired
+    private AccountTypeRepository accountTypeRepository;
 
     @Autowired
+    private AccountTypeService accountTypeService;
+
+    /*@Autowired
     public AccountTypeController(AccountTypeRepository accountTypeRepository,AccountTypeService accountTypeService){
         this.accountTypeService = accountTypeService;
         this.accountTypeRepository = accountTypeRepository;
-    }
+    }*/
 
     @PostMapping("/addAccountType")
-    public ResponseEntity<AccountType> addAccountType(@RequestBody AccountType accountType){
+    public ResponseEntity<AccountType> addAccountType(@RequestBody @Validated AccountType accountType){
         accountTypeRepository.save(accountType);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -36,7 +40,7 @@ public class AccountTypeController {
     }
 
     @GetMapping("/getAccountTypeDetails/{accountTypeId}")
-    public AccountType findAccountTypeDetails(@PathVariable int accountTypeId){
+    public AccountType findAccountTypeDetails(@PathVariable Integer accountTypeId){
         return accountTypeRepository.findAccountTypeByAccountTypeId(accountTypeId);
     }
 
@@ -47,13 +51,13 @@ public class AccountTypeController {
     }
 
     @PutMapping("/updateAccountTypeDetails/{accountTypeId}")
-    public AccountType updateAccountTypeFields(@RequestBody AccountType accountType, @PathVariable Integer accountTypeId){
+    public AccountType updateAccountTypeFields(@RequestBody @Validated AccountType accountType, @PathVariable @Validated Integer accountTypeId){
         accountTypeService.updateAccountTypeDetailsByAccountTypeId(accountType,accountTypeId);
         return accountType;
     }
 
     @DeleteMapping("/deleteAccountType/{accountTypeId}")
-    public void deleteAccountTypeById(@PathVariable int accountTypeId){
+    public void deleteAccountTypeById(@PathVariable Integer accountTypeId){
         accountTypeService.deleteAccountTypeByAccountTypeId(accountTypeId);
     }
 

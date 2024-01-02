@@ -5,9 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Repository
 public interface AccountTypeRepository extends JpaRepository<AccountType,Integer> {
@@ -15,12 +12,12 @@ public interface AccountTypeRepository extends JpaRepository<AccountType,Integer
     AccountType findAccountTypeByAccountTypeId(Integer accountTypeId);
 
     @Query(value="select at.accountType from AccountType at where at.accountTypeId=:accountTypeId")
-    String findOnlyAccountTypeByAccountTypeId(@RequestParam Integer accountTypeId);
+    String findOnlyAccountTypeByAccountTypeId(Integer accountTypeId);
 
     @Modifying
     @Query(value="update AccountType at set at.charges=:charges, at.interestRate=:interestRate, at.monthlyAvgBalance=:monthlyAvgBalance where at.accountTypeId=:accountTypeId")
-    Void  updateAccountType(@RequestBody AccountType accountType, @PathVariable int accountTypeId);
+    Void updateAccountType(AccountType accountType, Integer accountTypeId);
 
 
-    void deleteAccountTypeByAccountTypeId(@PathVariable int accountTypeId);
+    void deleteAccountTypeByAccountTypeId(Integer accountTypeId);
 }

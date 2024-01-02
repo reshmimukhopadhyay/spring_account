@@ -3,6 +3,7 @@ package com.spring.account.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,7 +29,7 @@ public class AccountType {
 
     @Column(name="monthly_avg_balance")
     @NotNull(message="Monthly Average Balance should not be null")
-    @NotBlank(message="Monthly Average Balance should not be blank")
+    @Positive
     private Integer monthlyAvgBalance;
 
     /*@OneToOne
@@ -36,7 +37,7 @@ public class AccountType {
 
     @Column(name="rate_of_interest_%")
     @NotNull(message="Interest Rate should not be null")
-    @NotBlank(message="Interest Rate should not be blank")
+    @Positive
     private Integer interestRate;
 
     /*@OneToOne
@@ -44,7 +45,7 @@ public class AccountType {
 
     @Column(name="charge")
     @NotNull(message="Charges should not be null")
-    @NotBlank(message="Charges should not be blank")
+    @Positive
     private Integer charges;
 
     /*@OneToOne(mappedBy = "accountType")
