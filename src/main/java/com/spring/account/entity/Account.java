@@ -1,6 +1,7 @@
 package com.spring.account.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +26,7 @@ public class Account {
 
     @Column(name="account_number")
     @NotNull(message = "Account Number should not be null")
+    @NotBlank(message= "Account Number should not be blank")
     @Positive
     private Integer accountNumber;
 
@@ -33,9 +35,12 @@ public class Account {
 
     @Column(name="user_auth_id")
     @NotNull(message = "User Authentication id should not be null")
+    @NotBlank(message= "User Authentication id should not be blank")
     private Integer userAuthenticationId;
 
-    @Column(name="customer_id",nullable = false)
+    @Column(name="customer_id")
+    @NotNull(message= "Customer Id should not be null")
+    @NotBlank(message= "Customer Id should not be blank")
     private UUID customerId;
 
     /*@Enumerated(EnumType.STRING)
@@ -45,7 +50,9 @@ public class Account {
    /* @ManyToOne
     private BankBranch bankBranch;*/
 
-    @Column(name="branch_code",nullable = false)
+    @Column(name="branch_code")
+    @NotNull(message= "Branch Code should not be null")
+    @NotBlank(message= "Branch Code should not be blank")
     private String branchCode;
 
     /*@OneToMany(mappedBy = "account")
