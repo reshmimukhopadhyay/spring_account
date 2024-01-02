@@ -14,15 +14,17 @@ public class AccountTypeService {
     List <AccountType>accountTypeList = new ArrayList<>();
 
     public void updateAccountTypeDetailsByAccountTypeId(AccountType accountType, int accountTypeId){
-        accountTypeList.stream().map(at->{
-            if(at.getAccountTypeId()==accountTypeId){
-                at.setAccountType(accountType.getAccountType());
-                at.setCharges(accountType.getCharges());
-                at.setInterestRate(accountType.getInterestRate());
-                at.setMonthlyAvgBalance(accountType.getMonthlyAvgBalance());
-            }
-            return at;
-        }).collect(Collectors.toList());
+
+            accountTypeList.stream().map(at -> {
+                if (at.getAccountTypeId() == accountTypeId) {
+                    at.setAccountType(accountType.getAccountType());
+                    at.setCharges(accountType.getCharges());
+                    at.setInterestRate(accountType.getInterestRate());
+                    at.setMonthlyAvgBalance(accountType.getMonthlyAvgBalance());
+                }
+                return at;
+            }).collect(Collectors.toList());
+
     }
 
     public void deleteAccountTypeByAccountTypeId(int accountTypeId){

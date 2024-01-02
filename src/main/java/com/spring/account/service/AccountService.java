@@ -19,11 +19,7 @@ public class AccountService {
     }
 
     public Account createAccount(Account account) throws Exception {
-        if(account.getAccountNumber()!=null && account.getBranchCode()!=null && account.getCustomerId()!=null && account.getUserAuthenticationId()!=null) {
-            return accountRepository.save(account);
-        }else{
-            throw new RuntimeException("Field should not be null");
-        }
+          return accountRepository.save(account);
 
     }
 
@@ -36,12 +32,6 @@ public class AccountService {
        }
 
     public Account findAccountByCustomerId(UUID customerId){
-        if(!customerId.toString().isEmpty() && !customerId.toString().isBlank()) {
-            return accountRepository.findAccountByCustomerId(customerId);
-        }else if(customerId.toString()!=null){
-            return accountRepository.findAccountByCustomerId(customerId);
-        }else{
-            throw new RuntimeException("Customer Id should not be null");
-        }
+        return accountRepository.findAccountByCustomerId(customerId);
     }
 }

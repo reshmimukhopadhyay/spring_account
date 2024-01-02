@@ -28,6 +28,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation group: 'org.springframework.security', name: 'spring-security-crypto', version: '6.1.5'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.2.0'
+	implementation group: 'javax.validation', name: 'validation-api', version: '2.0.0.Final'
 
 
 	testImplementation 'junit:junit:4.13.1'

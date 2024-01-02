@@ -1,11 +1,13 @@
 package com.spring.account.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Positive;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -21,13 +23,16 @@ public class Account {
     @Column(name="account_id")
     private int accountId;
 
-    @Column(name="account_number",nullable = false,unique=true,length = 10)
+    @Column(name="account_number")
+    @NotNull(message = "Account Number should not be null")
+    @Positive
     private Integer accountNumber;
 
     /*@ManyToMany
     private List<UserAuthentication> userAuthentication;*/
 
-    @Column(name="user_auth_id",nullable = false)
+    @Column(name="user_auth_id")
+    @NotNull(message = "User Authentication id should not be null")
     private Integer userAuthenticationId;
 
     @Column(name="customer_id",nullable = false)
